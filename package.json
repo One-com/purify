@@ -29,6 +29,6 @@
   "main": "lib/purify.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/purify.git"
+    "url": "git://github.com/One-com/purify.git"
   }
 }

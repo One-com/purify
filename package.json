@@ -10,8 +10,8 @@
     "param"
   ],
   "scripts": {
-    "prepublish": "npm test",
-    "test": "mocha -R spec"
+    "prepublish": "make test",
+    "test": "make test"
   },
   "version": "1.1.0",
   "engines": {

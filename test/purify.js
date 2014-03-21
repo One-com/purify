@@ -13,28 +13,27 @@ function equalsWithEpsilon(valueToCompareTo, epsilon) {
 }
 
 describe('#purify', function () {
-    var expect = unexpected.clone();
-
-    expect.addAssertion('[not] to allow', function (valueToValidate, expectedOutputValue) {
-        var methodArgs = [valueToValidate, bogusDefaultValue],
-            methodName = this.obj;
-        if (Array.isArray(methodName)) {
-            Array.prototype.splice.apply(methodArgs, [1, 0].concat(methodName.slice(1)));
-            methodName = methodName[0];
-        }
-        result = purify[methodName].apply(purify, methodArgs);
-
-        if (arguments.length > 1) {
-            if (typeof expectedOutputValue === 'function') {
-                this.assert(expectedOutputValue(result));
-            } else {
-                this.assert(this.eql(result, expectedOutputValue));
+    var expect = unexpected.clone()
+        .addAssertion('[not] to allow', function (expect, subject, valueToValidate, expectedOutputValue) {
+            var methodArgs = [valueToValidate, bogusDefaultValue],
+                methodName = subject;
+            if (Array.isArray(methodName)) {
+                Array.prototype.splice.apply(methodArgs, [1, 0].concat(methodName.slice(1)));
+                methodName = methodName[0];
             }
-        } else {
-            // Unexpected will reverse this if this.flags.not is set
-            this.assert(!this.eql(result, bogusDefaultValue));
-        }
-    });
+            result = purify[methodName].apply(purify, methodArgs);
+
+            if (arguments.length > 3) {
+                if (typeof expectedOutputValue === 'function') {
+                    expect(expectedOutputValue(result), '[not] to be truthy');
+                } else {
+                    expect(result, 'to equal', expectedOutputValue);
+                }
+            } else {
+                // Unexpected will reverse this if this.flags.not is set
+                expect(result, '[!not] to equal', bogusDefaultValue);
+            }
+        });
 
     describe('#boolean()', function () {
         it('should accept valid input', function () {

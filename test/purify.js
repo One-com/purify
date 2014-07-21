@@ -60,105 +60,66 @@ describe('#purify', function () {
     describe('#email()', function () {
         it('should accept valid input', function () {
             expect('email', 'to allow', 'andreas@centersurf.net');
+            expect('email', 'to allow', 'andreas@centersurf.quuxbar');
         });
 
         it('should reject invalid input', function () {
-            expect('email', 'not to allow', 'andreas@centersurf.quuxbar');
             expect('email', 'not to allow', '');
             expect('email', 'not to allow', '\x00andreas@centersurf.net');
+            expect('email', 'not to allow', 'andræas@centersurf.quuxbar');
         });
     });
 
-    describe('#emailRelaxed()', function () {
+    describe('#emailIdn()', function () {
         it('should accept valid input', function () {
-            expect('emailRelaxed', 'to allow', 'andreas@centersurf.quuxbar');
+            expect('emailIdn', 'to allow', 'andreas@cæntersurf.net');
+            expect('emailIdn', 'to allow', 'andreas@cæntersurf.quuxbar');
         });
 
         it('should reject invalid input', function () {
-            expect('emailRelaxed', 'not to allow', 'andræas@centersurf.quuxbar');
-        });
-    });
-
-
-    describe('#emailRelaxedIdn()', function () {
-        it('should accept valid input', function () {
-            expect('emailRelaxedIdn', 'to allow', 'andreas@cæntersurf.net');
-            expect('emailRelaxedIdn', 'to allow', 'andreas@cæntersurf.quuxbar');
-        });
-
-        it('should reject invalid input', function () {
-            expect('emailRelaxedIdn', 'not to allow', 'andræas@cæntersurf.quuxbar');
-            expect('emailRelaxedIdn', 'not to allow', '');
-            expect('emailRelaxedIdn', 'not to allow', '\x00andreas@cæntersurf.net');
+            expect('emailIdn', 'not to allow', 'andræas@cæntersurf.quuxbar');
+            expect('emailIdn', 'not to allow', '');
+            expect('emailIdn', 'not to allow', '\x00andreas@cæntersurf.net');
         });
     });
 
     describe('#domain()', function () {
         it('should accept valid input', function () {
             expect('domain', 'to allow', 'centersurf.net');
+            expect('domain', 'to allow', 'centersurf.quuxbar');
         });
 
         it('should reject invalid input', function () {
-            expect('domain', 'not to allow', 'centersurf.quuxbar');
             expect('domain', 'not to allow', '');
             expect('domain', 'not to allow', '\x00centersurf.net');
+            expect('domain', 'not to allow', '/!');
         });
     });
 
     describe('#domainIdn()', function () {
         it('should accept valid input', function () {
             expect('domainIdn', 'to allow', 'cæntersurf.net');
+            expect('domainIdn', 'to allow', 'centersurf.quuxbar');
+            expect('domainIdn', 'to allow', 'cæntersurf.quuxbar');
         });
 
         it('should reject invalid input', function () {
-            expect('domainIdn', 'not to allow', 'centersurf.quuxbar');
             expect('domainIdn', 'not to allow', '');
             expect('domainIdn', 'not to allow', '\x00centersurf.net');
-        });
-    });
 
-    describe('#domainRelaxed()', function () {
-        it('should accept valid input', function () {
-            expect('domainRelaxed', 'to allow', 'centersurf.quuxbar');
-        });
-
-        it('should reject invalid input', function () {
-            expect('domainRelaxed', 'not to allow', '/!');
-        });
-    });
-
-    describe('#domainRelaxedIdn()', function () {
-        it('should accept valid input', function () {
-            expect('domainRelaxedIdn', 'to allow', 'cæntersurf.net');
-            expect('domainRelaxedIdn', 'to allow', 'cæntersurf.quuxbar');
-        });
-
-        it('should reject invalid input', function () {
-            expect('domainRelaxedIdn', 'not to allow', '');
-            expect('domainRelaxedIdn', 'not to allow', '\x00centersurf.net');
         });
     });
 
     describe('#url()', function () {
         it('should accept valid input', function () {
             expect('url', 'to allow', 'http://centersurf.net/');
+            expect('url', 'to allow', 'http://centersurf.quuxbar/');
         });
 
         it('should reject invalid input', function () {
             expect('url', 'not to allow', 'http://centersurf.net/æøå');
-            expect('url', 'not to allow', 'http://centersurf.quuxbar/');
             expect('url', 'not to allow', '\x00http://centersurf.net/');
-        });
-    });
-
-    describe('#urlRelaxed()', function () {
-        it('should accept valid input', function () {
-            expect('urlRelaxed', 'to allow', 'http://centersurf.quuxbar/');
-            expect('urlRelaxed', 'to allow', 'http://centersurf.quuxbar/');
-        });
-
-        it('should reject invalid input', function () {
-            expect('urlRelaxed', 'not to allow', 'http://localhost/');
+            expect('url', 'not to allow', 'http://localhost/');
         });
     });
 

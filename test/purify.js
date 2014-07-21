@@ -123,13 +123,13 @@ describe('#purify', function () {
         });
     });
 
-    describe('#urlRelaxedWithLocalhost()', function () {
+    describe('#urlWithLocalhost()', function () {
         it('should accept valid input', function () {
-            expect('urlRelaxedWithLocalhost', 'to allow', 'http://localhost/');
+            expect('urlWithLocalhost', 'to allow', 'http://localhost/');
         });
 
         it('should reject invalid input', function () {
-            expect('urlRelaxedWithLocalhost', 'not to allow', 'quuxhttp://localhost/');
+            expect('urlWithLocalhost', 'not to allow', 'quuxhttp://localhost/');
         });
     });
 

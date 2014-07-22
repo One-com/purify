@@ -19,7 +19,7 @@
     "node": ">=0.4.0"
   },
   "dependencies": {
-    "one-validation": "=1.0.0",
+    "one-validation": "=1.1.0",
     "unicoderegexp": "=0.3.0"
   },
   "devDependencies": {

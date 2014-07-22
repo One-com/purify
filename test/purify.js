@@ -21,7 +21,7 @@ describe('#purify', function () {
                 Array.prototype.splice.apply(methodArgs, [1, 0].concat(methodName.slice(1)));
                 methodName = methodName[0];
             }
-            result = purify[methodName].apply(purify, methodArgs);
+            var result = purify[methodName].apply(purify, methodArgs);
 
             if (arguments.length > 3) {
                 if (typeof expectedOutputValue === 'function') {

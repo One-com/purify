@@ -251,7 +251,7 @@ describe('#purify', function () {
             it('should reject invalid input', function () {
                 expect(['integerInRange', lowerBound, upperBound], 'not to allow', 'abc');
             });
-        })
+        });
     });
 
     describe('#positiveInteger()', function () {

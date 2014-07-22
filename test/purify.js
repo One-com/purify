@@ -213,7 +213,7 @@ describe('#purify', function () {
 
             it('should accept valid input', function () {
                 expect(['integerInRange', lowerBound, upperBound], 'to allow', -100, -100);
-                expect(['integerInRange', lowerBound, upperBound], 'to allow', "-100", -100);
+                expect(['integerInRange', lowerBound, upperBound], 'to allow', '-100', -100);
                 expect(['integerInRange', lowerBound, upperBound], 'to allow', upperBound, upperBound);
             });
 

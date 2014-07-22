@@ -11,8 +11,9 @@
   ],
   "scripts": {
     "prepublish": "make test",
+    "lint": "jshint .",
     "test": "make test",
-    "travis": "npm test"
+    "travis": "npm run lint && npm test"
   },
   "version": "2.0.0",
   "engines": {
@@ -24,6 +25,7 @@
     "unicoderegexp": "=0.3.0"
   },
   "devDependencies": {
+    "jshint": "=2.5.2",
     "mocha": "=1.12.0",
     "unexpected": "=3.0.1"
   },

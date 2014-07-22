@@ -103,8 +103,17 @@ describe('#purify', function () {
 
     describe('#domain()', function () {
         it('should accept valid input', function () {
-            expect('domain', 'to allow', 'centersurf.net');
-            expect('domain', 'to allow', 'centersurf.quuxbar');
+            // Non-IDN domains
+            expect('domain', 'to allow', 'centersurf.net', 'centersurf.net');
+            expect('domain', 'to allow', 'centersurf.quuxbar', 'centersurf.quuxbar');
+
+            // Punycode non-punycoded IDN domains
+            expect('domain', 'to allow', 'cæntersurf.net', 'xn--cntersurf-g3a.net');
+            expect('domain', 'to allow', 'cæntersurf.quuxbar', 'xn--cntersurf-g3a.quuxbar');
+
+            // Already punycoded IDN domains
+            expect('domain', 'to allow', 'xn--cntersurf-g3a.net', 'xn--cntersurf-g3a.net');
+            expect('domain', 'to allow', 'xn--cntersurf-g3a.quuxbar', 'xn--cntersurf-g3a.quuxbar');
         });
 
         it('should reject invalid input', function () {
@@ -116,15 +125,23 @@ describe('#purify', function () {
 
     describe('#domainIdn()', function () {
         it('should accept valid input', function () {
-            expect('domainIdn', 'to allow', 'cæntersurf.net');
-            expect('domainIdn', 'to allow', 'centersurf.quuxbar');
-            expect('domainIdn', 'to allow', 'cæntersurf.quuxbar');
+            // Non-IDN domains
+            expect('domainIdn', 'to allow', 'centersurf.net', 'centersurf.net');
+            expect('domainIdn', 'to allow', 'centersurf.quuxbar', 'centersurf.quuxbar');
+
+            // Already non-punycoded IDN domains
+            expect('domainIdn', 'to allow', 'cæntersurf.net', 'cæntersurf.net');
+            expect('domainIdn', 'to allow', 'cæntersurf.quuxbar', 'cæntersurf.quuxbar');
+
+            // Decode punycoded IDN domains
+            expect('domainIdn', 'to allow', 'xn--cntersurf-g3a.net', 'cæntersurf.net');
+            expect('domainIdn', 'to allow', 'xn--cntersurf-g3a.quuxbar', 'cæntersurf.quuxbar');
         });
 
         it('should reject invalid input', function () {
             expect('domainIdn', 'not to allow', '');
             expect('domainIdn', 'not to allow', '\x00centersurf.net');
-
+            expect('domainIdn', 'not to allow', '/!');
         });
     });
 

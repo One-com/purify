@@ -13,7 +13,8 @@
     "prepublish": "make test",
     "lint": "jshint .",
     "test": "make test",
-    "travis": "npm run lint && npm test"
+    "travis": "npm run lint && NODE_ENV=development ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- --reporter dot && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "coverage": "NODE_ENV=development ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- --reporter dot"
   },
   "version": "2.0.0",
   "engines": {
@@ -25,6 +26,8 @@
     "unicoderegexp": "=0.3.0"
   },
   "devDependencies": {
+    "coveralls": "=2.11.1",
+    "istanbul": "=0.3.0",
     "jshint": "=2.5.2",
     "mocha": "=1.12.0",
     "unexpected": "=3.0.1"

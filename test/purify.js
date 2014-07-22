@@ -59,8 +59,17 @@ describe('#purify', function () {
 
     describe('#email()', function () {
         it('should accept valid input', function () {
-            expect('email', 'to allow', 'andreas@centersurf.net');
-            expect('email', 'to allow', 'andreas@centersurf.quuxbar');
+            // Non-IDN domains
+            expect('email', 'to allow', 'andreas@centersurf.net', 'andreas@centersurf.net');
+            expect('email', 'to allow', 'andreas@centersurf.quuxbar', 'andreas@centersurf.quuxbar');
+
+            // Punycode non-punycoded IDN domains
+            expect('email', 'to allow', 'andreas@cæntersurf.net', 'andreas@xn--cntersurf-g3a.net');
+            expect('email', 'to allow', 'andreas@cæntersurf.quuxbar', 'andreas@xn--cntersurf-g3a.quuxbar');
+
+            // Already punycoded IDN domains
+            expect('email', 'to allow', 'andreas@xn--cntersurf-g3a.net', 'andreas@xn--cntersurf-g3a.net');
+            expect('email', 'to allow', 'andreas@xn--cntersurf-g3a.quuxbar', 'andreas@xn--cntersurf-g3a.quuxbar');
         });
 
         it('should reject invalid input', function () {
@@ -72,14 +81,23 @@ describe('#purify', function () {
 
     describe('#emailIdn()', function () {
         it('should accept valid input', function () {
-            expect('emailIdn', 'to allow', 'andreas@cæntersurf.net');
-            expect('emailIdn', 'to allow', 'andreas@cæntersurf.quuxbar');
+            // Non-IDN domains
+            expect('emailIdn', 'to allow', 'andreas@centersurf.net', 'andreas@centersurf.net');
+            expect('emailIdn', 'to allow', 'andreas@centersurf.quuxbar', 'andreas@centersurf.quuxbar');
+
+            // Already non-punycoded IDN domains
+            expect('emailIdn', 'to allow', 'andreas@cæntersurf.net', 'andreas@cæntersurf.net');
+            expect('emailIdn', 'to allow', 'andreas@cæntersurf.quuxbar', 'andreas@cæntersurf.quuxbar');
+
+            // Decode punycoded IDN domains
+            expect('emailIdn', 'to allow', 'andreas@xn--cntersurf-g3a.net', 'andreas@cæntersurf.net');
+            expect('emailIdn', 'to allow', 'andreas@xn--cntersurf-g3a.quuxbar', 'andreas@cæntersurf.quuxbar');
         });
 
         it('should reject invalid input', function () {
-            expect('emailIdn', 'not to allow', 'andræas@cæntersurf.quuxbar');
             expect('emailIdn', 'not to allow', '');
             expect('emailIdn', 'not to allow', '\x00andreas@cæntersurf.net');
+            expect('emailIdn', 'not to allow', 'andræas@cæntersurf.quuxbar');
         });
     });
 

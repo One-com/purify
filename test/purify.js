@@ -97,6 +97,7 @@ describe('#purify', function () {
         it('should reject invalid input', function () {
             expect('emailIdn', 'not to allow', '');
             expect('emailIdn', 'not to allow', '\x00andreas@cæntersurf.net');
+            expect('emailIdn', 'not to allow', 'foo@bar.xn--no');
             expect('emailIdn', 'not to allow', 'andræas@cæntersurf.quuxbar');
         });
     });
@@ -141,6 +142,7 @@ describe('#purify', function () {
         it('should reject invalid input', function () {
             expect('domainIdn', 'not to allow', '');
             expect('domainIdn', 'not to allow', '\x00centersurf.net');
+            expect('domainIdn', 'not to allow', 'bar.xn--no');
             expect('domainIdn', 'not to allow', '/!');
         });
     });

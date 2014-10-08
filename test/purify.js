@@ -75,6 +75,7 @@ describe('#purify', function () {
         it('should reject invalid input', function () {
             expect('email', 'not to allow', '');
             expect('email', 'not to allow', '\x00andreas@centersurf.net');
+            expect('email', 'not to allow', 'foo@bar.xn--no');
             expect('email', 'not to allow', 'andræas@centersurf.quuxbar');
         });
     });
@@ -120,6 +121,7 @@ describe('#purify', function () {
         it('should reject invalid input', function () {
             expect('domain', 'not to allow', '');
             expect('domain', 'not to allow', '\x00centersurf.net');
+            expect('domain', 'not to allow', 'bar.xn--no');
             expect('domain', 'not to allow', '/!');
         });
     });

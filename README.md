@@ -61,6 +61,6 @@ API
 
 * `.json(rawValue, defaultValue)`
 
-Mostly, you can leave `defaultValue` empty, which will cause ratify to return
+Mostly, you can leave `defaultValue` empty, which will cause purify to return
 `undefined` in case the value doesn't pass validation.
 

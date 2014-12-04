@@ -23,3 +23,44 @@ app.get('/:userId', function (req, res, next) {
     }
 });
 ```
+
+API
+---
+
+* `.email(rawValue, defaultValue)`
+* `.emailIdn(rawValue, defaultValue)` - Returns e-mail with non-punycoded form regardless of input.
+* `.domainName(rawValue, defaultValue)`
+* `.domainNameIdn(rawValue, defaultValue)` - Returns domain in non-punycoded form regardless of input.
+* `.url(rawValue, defaultValue)`
+* `.urlWithLocalhost(rawValue, defaultValue)`
+
+* `.integer(rawValue, defaultValue)`
+* `.integerInRange(rawValue, lower, upper, defaultValue)`
+* `.positiveInteger(rawValue, defaultValue)`
+* `.positiveIntegerOrZero(rawValue, defaultValue)`
+* `.float(rawValue, defaultValue)`
+* `.positiveFloat(rawValue, defaultValue)`
+* `.positiveFloatOrZero(rawValue, defaultValue)`
+
+* `.nonEmptyVisibleUnicode(rawValue, defaultValue)`
+* `.visibleUnicode(rawValue, defaultValue)`
+* `.nonEmptyPrintableUnicode(rawValue, defaultValue)`
+* `.printableUnicode(rawValue, defaultValue)`
+* `.nonEmptyVisibleAscii(rawValue, defaultValue)`
+* `.visivleAscii(rawValue, defaultValue)`
+* `.nonEmptyPrintableAscii(rawValue, defaultValue)`
+* `.printableAscii(rawValue, defaultValue)`
+
+* `.alphaNumeric(rawValue, defaultValue)`
+* `.nonEmptyAlphaNumeric(rawValue, defaultValue)`
+* `.alphaNumericWithDot(rawValue, defaultValue)`
+
+* `.uuid(rawValue, defaultValue)`
+* `.upperCaseUuid(rawValue, defaultValue)`
+* `.lowerCaseUuid(rawValue, defaultValue)`
+
+* `.json(rawValue, defaultValue)`
+
+Mostly, you can leave `defaultValue` empty, which will cause ratify to return
+`undefined` in case the value doesn't pass validation.
+

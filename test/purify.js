@@ -76,6 +76,7 @@ describe('#purify', function () {
             expect('email', 'not to allow', '');
             expect('email', 'not to allow', '\x00andreas@centersurf.net');
             expect('email', 'not to allow', 'foo@bar.xn--no');
+            expect('email', 'not to allow', 'foo@bar.xn--nod');
             expect('email', 'not to allow', 'andræas@centersurf.quuxbar');
         });
     });
@@ -99,6 +100,7 @@ describe('#purify', function () {
             expect('emailIdn', 'not to allow', '');
             expect('emailIdn', 'not to allow', '\x00andreas@cæntersurf.net');
             expect('emailIdn', 'not to allow', 'foo@bar.xn--no');
+            expect('emailIdn', 'not to allow', 'foo@bar.xn--nod');
             expect('emailIdn', 'not to allow', 'andræas@cæntersurf.quuxbar');
         });
     });
@@ -122,6 +124,7 @@ describe('#purify', function () {
             expect('domain', 'not to allow', '');
             expect('domain', 'not to allow', '\x00centersurf.net');
             expect('domain', 'not to allow', 'bar.xn--no');
+            expect('domain', 'not to allow', 'bar.xn--nod');
             expect('domain', 'not to allow', '/!');
         });
     });
@@ -145,6 +148,7 @@ describe('#purify', function () {
             expect('domainIdn', 'not to allow', '');
             expect('domainIdn', 'not to allow', '\x00centersurf.net');
             expect('domainIdn', 'not to allow', 'bar.xn--no');
+            expect('domainIdn', 'not to allow', 'bar.xn--nod');
             expect('domainIdn', 'not to allow', '/!');
         });
     });

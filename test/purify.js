@@ -70,6 +70,12 @@ describe('#purify', function () {
             // Already punycoded IDN domains
             expect('email', 'to allow', 'andreas@xn--cntersurf-g3a.net', 'andreas@xn--cntersurf-g3a.net');
             expect('email', 'to allow', 'andreas@xn--cntersurf-g3a.quuxbar', 'andreas@xn--cntersurf-g3a.quuxbar');
+
+            // Mixed-case local parts allowed
+            expect('email', 'to allow', 'ANDreas@centersurf.net', 'ANDreas@centersurf.net');
+            expect('email', 'to allow', 'AnDrEaS@centersurf.quuxbar', 'AnDrEaS@centersurf.quuxbar');
+            // Mixed case domain parts get lowercased
+            expect('email', 'to allow', 'andreas@CENTERSURF.net', 'andreas@centersurf.net');
         });
 
         it('should reject invalid input', function () {
@@ -94,6 +100,12 @@ describe('#purify', function () {
             // Decode punycoded IDN domains
             expect('emailIdn', 'to allow', 'andreas@xn--cntersurf-g3a.net', 'andreas@cæntersurf.net');
             expect('emailIdn', 'to allow', 'andreas@xn--cntersurf-g3a.quuxbar', 'andreas@cæntersurf.quuxbar');
+
+            // Mixed-case local parts allowed
+            expect('email', 'to allow', 'ANDreas@centersurf.net', 'ANDreas@centersurf.net');
+            expect('email', 'to allow', 'AnDrEaS@centersurf.quuxbar', 'AnDrEaS@centersurf.quuxbar');
+            // Mixed case domain parts get lowercased
+            expect('email', 'to allow', 'andreas@CENTERSURF.net', 'andreas@centersurf.net');
         });
 
         it('should reject invalid input', function () {

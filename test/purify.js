@@ -569,4 +569,34 @@ describe('#purify', function () {
             expect('json', 'not to allow', '{foo:"bar"}');
         });
     });
+
+     describe('#alphaNumericWithUnderscore()', function () {
+        it('should accept valid input', function () {
+            expect('alphaNumericWithUnderscore', 'to allow', 'user_id');
+            expect('alphaNumericWithUnderscore', 'to allow', 1234, '1234');
+            expect('alphaNumericWithUnderscore', 'to allow', 12.34, '12.34');
+            expect('alphaNumericWithUnderscore', 'to allow', 'userName');
+            expect('alphaNumericWithUnderscore', 'to allow', 'abc__def');
+            expect('alphaNumericWithUnderscore', 'to allow', '');
+        });
+
+        it('should reject invalid input', function () {
+            expect('alphaNumericWithUnderscore', 'not to allow', 'abcdef:abc');
+        });
+    });
+
+    describe('#nonEmptyAlphaNumericWithUnderscore()', function () {
+        it('should accept valid input', function () {
+            expect('nonEmptyAlphaNumericWithUnderscore', 'to allow', 'user_id');
+            expect('nonEmptyAlphaNumericWithUnderscore', 'to allow', 1234, '1234');
+            expect('nonEmptyAlphaNumericWithUnderscore', 'to allow', 12.34, '12.34');
+            expect('nonEmptyAlphaNumericWithUnderscore', 'to allow', 'userName');
+            expect('nonEmptyAlphaNumericWithUnderscore', 'to allow', 'abc__def');
+        });
+
+        it('should reject invalid input', function () {
+            expect('nonEmptyAlphaNumericWithUnderscore', 'not to allow', '');
+            expect('nonEmptyAlphaNumericWithUnderscore', 'not to allow', 'abcdef:abc');
+        });
+    });
 });

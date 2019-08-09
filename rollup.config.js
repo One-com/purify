@@ -7,6 +7,7 @@ module.exports = [
             file: pkg.main,
             name: 'purify',
             format: 'umd',
+            sourcemap: true,
             strict: false
         },
         plugins: [

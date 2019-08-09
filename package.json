@@ -30,7 +30,7 @@
     "istanbul": "0.3.0",
     "jshint": "2.5.2",
     "mocha": "1.12.0",
-    "unexpected": "3.0.1"
+    "unexpected": "^10.40.2"
   },
   "main": "lib/purify.js",
   "repository": {

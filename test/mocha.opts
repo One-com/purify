@@ -1,3 +1,2 @@
---reporter spec
 --recursive
 --check-leaks

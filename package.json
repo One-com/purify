@@ -27,7 +27,7 @@
     "unicoderegexp": "0.3.0"
   },
   "devDependencies": {
-    "coveralls": "2.11.1",
+    "coveralls": "^3.0.6",
     "istanbul": "0.3.0",
     "jshint": "2.5.2",
     "mocha": "^6.2.0",

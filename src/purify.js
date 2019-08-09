@@ -1,12 +1,8 @@
-(function (root, factory) {
-    if (typeof exports === 'object') {
-        module.exports = factory(require('one-validation'), require('punycode'), require('unicoderegexp'));
-    } else if (typeof define === 'function' && define.amd) {
-        define(['one-validation', 'punycode', 'unicoderegexp'], factory);
-    } else {
-        root.purify = factory(root.one.validation, root.punycode, root.unicodeRegExp);
-    }
-}(this, function (oneValidation, punycode, unicodeRegExp) {
+var oneValidation = require('one-validation');
+var punycode = require('punycode');
+var unicodeRegExp = require('unicoderegexp');
+
+module.exports = (function () {
     var purify = {};
 
     purify.boolean = function (rawValue, defaultValue) {
@@ -350,4 +346,4 @@
     };
 
     return purify;
-}));
+})();

@@ -1,10 +1,10 @@
 purify
 ======
 
-[![NPM version](https://badge.fury.io/js/purify.png)](http://badge.fury.io/js/purify)
-[![Build Status](https://travis-ci.org/One-com/purify.png?branch=master)](https://travis-ci.org/One-com/purify)
-[![Coverage Status](https://coveralls.io/repos/One-com/purify/badge.png)](https://coveralls.io/r/One-com/purify)
-[![Dependency Status](https://david-dm.org/One-com/purify.png)](https://david-dm.org/One-com/purify)
+[![NPM version](https://img.shields.io/npm/v/purify)](https://www.npmjs.com/package/purify)
+[![Build Status](https://travis-ci.org/One-com/purify.svg?branch=master)](https://travis-ci.org/One-com/purify)
+[![Coverage Status](https://coveralls.io/repos/github/One-com/purify/badge.svg?branch=master)](https://coveralls.io/github/One-com/purify?branch=master)
+[![Dependency Status](https://david-dm.org/One-com/purify.svg)](https://david-dm.org/One-com/purify)
 
 The library provides a number of battle tested validation functions. Each returns the
 value supplied or a `defaultValue`. Mostly, you can leave `defaultValue` empty, which

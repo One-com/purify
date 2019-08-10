@@ -6,7 +6,20 @@ purify
 [![Coverage Status](https://coveralls.io/repos/One-com/purify/badge.png)](https://coveralls.io/r/One-com/purify)
 [![Dependency Status](https://david-dm.org/One-com/purify.png)](https://david-dm.org/One-com/purify)
 
+The library provides a number of battle tested validation functions. Each returns the
+value supplied or a `defaultValue`. Mostly, you can leave `defaultValue` empty, which
+will cause purify to return `undefined` in case the value doesn't pass validation.
 
+Usage
+-----
+
+The library can be installed by simply installing `purify` from npm and can be used
+body on node with `require('purify')` or as a self-contained UMD browser bundle that
+can be used directly in a script tag as follows:  
+`<script src="./node_modules/lib/purify.js">`
+
+Example
+-------
 
 ```javascript
 var app = express(),
@@ -60,7 +73,3 @@ API
 * `.lowerCaseUuid(rawValue, defaultValue)`
 
 * `.json(rawValue, defaultValue)`
-
-Mostly, you can leave `defaultValue` empty, which will cause purify to return
-`undefined` in case the value doesn't pass validation.
-

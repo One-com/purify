@@ -1,7 +1,8 @@
-/*global it, describe*/
-var purify = require('../lib/purify'),
-    unexpected = require('unexpected'),
-    bogusDefaultValue = {};
+/*globals window, it, describe*/
+var purify = typeof window !== 'undefined' ? window.purify : require('../lib/purify');
+var unexpected = typeof window !== 'undefined' ? window.weknowhow.expect : require('unexpected');
+
+var bogusDefaultValue = {};
 
 function equalsWithEpsilon(valueToCompareTo, epsilon) {
     if (typeof epsilon === 'undefined') {

@@ -1,9 +1,21 @@
 language: node_js
+env:
+  - TARGET=coverage
 node_js:
   - "6"
   - "8"
   - "10"
 script:
   - npm run lint
-  - npm run coverage
+  - npm run $TARGET
+matrix:
+  include:
+    - name: Chrome headless
+      node_js: "8"
+      env:
+        - TARGET=test-browser
+        - BROWSER=ChromeHeadless
 after_success: '<coverage/lcov.info ./node_modules/coveralls/bin/coveralls.js'
+
+addons:
+  chrome: stable

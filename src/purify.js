@@ -8,10 +8,11 @@ module.exports = (function () {
     purify.boolean = function (rawValue, defaultValue) {
         if (typeof rawValue === 'boolean') {
             return rawValue;
-        } else if (typeof rawValue === 'string') {
-            var isTrue  = /^(?:1|on|true|yes)$/i.test(rawValue),
-                isFalse = /^(?:0|off|false|no)$/i.test(rawValue);
-            return isTrue ? true : (isFalse ? false : defaultValue);
+        }
+        
+        if (typeof rawValue === 'string') {
+            var isTrue  = /^(?:1|on|true|yes)$/i.test(rawValue);
+            return isTrue ? true : defaultValue;
         }
         return defaultValue;
     };

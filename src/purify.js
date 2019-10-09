@@ -12,7 +12,7 @@ module.exports = (function () {
         
         if (typeof rawValue === 'string') {
             var isTrue  = /^(?:1|on|true|yes)$/i.test(rawValue);
-            return isTrue ? true : defaultValue;
+            return isTrue ? true : (defaultValue || false);
         }
         return defaultValue;
     };

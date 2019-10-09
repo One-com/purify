@@ -11,8 +11,9 @@ module.exports = (function () {
         }
         
         if (typeof rawValue === 'string') {
-            var isTrue  = /^(?:1|on|true|yes)$/i.test(rawValue);
-            return isTrue ? true : (defaultValue || false);
+            var isTrue  = /^(?:1|on|true|yes)$/i.test(rawValue),
+                isFalse = /^(?:0|off|false|no)$/i.test(rawValue);
+            return isTrue ? true : (isFalse ? false : defaultValue);
         }
         return defaultValue;
     };

@@ -60,7 +60,7 @@ API
 * `.nonEmptyPrintableUnicode(rawValue, defaultValue)`
 * `.printableUnicode(rawValue, defaultValue)`
 * `.nonEmptyVisibleAscii(rawValue, defaultValue)`
-* `.visivleAscii(rawValue, defaultValue)`
+* `.visibleAscii(rawValue, defaultValue)`
 * `.nonEmptyPrintableAscii(rawValue, defaultValue)`
 * `.printableAscii(rawValue, defaultValue)`
 
